@@ -29,31 +29,31 @@ public class SellOneItemTest {
     @Test
     public void testEveryBarcodeSamePrice() throws Exception {
         sale.onBarcode("12345");
-        assertEquals(display.text, "$1.95");
+        assertEquals(display.getText(), "$1.95");
     }
 
     @Test
     public void testSecondBarcode() throws Exception {
         sale.onBarcode("12346");
-        assertEquals(display.text, "$2.95");
+        assertEquals(display.getText(), "$2.95");
     }
     @Test
     public void testThirdBarcode() throws Exception {
         sale.onBarcode("12347");
-        assertEquals(display.text, "$7.95");
+        assertEquals(display.getText(), "$7.95");
     }
 
     @Test
     public void testProductNotFind() throws Exception {
         sale.onBarcode("23456");
-        assertEquals(display.text, "product not found for 23456");
+        assertEquals(display.getText(), "product not found for 23456");
     }
 
     @Test
     public void testEmptyBarcode() throws Exception {
         Sale sale = new Sale(display, new Catalog(null));
         sale.onBarcode("");
-        assertEquals("Scanning error: barcode was empty", display.text);
+        assertEquals("Scanning error: barcode was empty", display.getText());
 
     }
 
