@@ -10,6 +10,8 @@ public class Display {
         this.text = text;
     }
 
+    public String getText() {return text;}
+
     public void displayPrice(String priceAsText) {
         setText(priceAsText);
     }

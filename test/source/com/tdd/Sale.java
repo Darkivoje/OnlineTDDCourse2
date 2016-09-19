@@ -28,4 +28,8 @@ public class Sale {
         }
     }
 
+    public void onTotal() {
+        display.setText("No sale in progress. Try scanning a product.");
+
+    }
 }
