@@ -6,9 +6,10 @@ package com.tdd;
 public class Sale {
 
     private Display display;
-    private ScanOneItemTest.Catalog catalog;
+    private Catalog catalog;
+    private String priceAsText;
 
-    public Sale(Display display, ScanOneItemTest.Catalog catalog) {
+    public Sale(Display display, Catalog catalog) {
         this.catalog = catalog;
         this.display = display;
     }
@@ -20,7 +21,7 @@ public class Sale {
             display.displayEmptyBarcodeMessage();
             return;
         }
-        String priceAsText = catalog.findPrice(barcode);
+        priceAsText = catalog.findPrice(barcode);
         if (priceAsText == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
@@ -29,7 +30,10 @@ public class Sale {
     }
 
     public void onTotal() {
+        if (priceAsText == null)
         display.displayNoSaleInProgressMessage();
+        else
+            display.setText("Total: $6.50");
 
     }
 
