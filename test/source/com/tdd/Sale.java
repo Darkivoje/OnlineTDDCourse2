@@ -33,7 +33,7 @@ public class Sale {
         if (priceAsText == null)
         display.displayNoSaleInProgressMessage();
         else
-            display.setText("Total: $6.50");
+            display.setText("Total: " + priceAsText);
 
     }
 
