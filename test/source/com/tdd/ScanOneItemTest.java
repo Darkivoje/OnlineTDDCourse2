@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by darkorajin on 18.08.16.
  */
-public class SellOneItemTest {
+public class ScanOneItemTest {
 
     private Display display;
     private Sale sale;

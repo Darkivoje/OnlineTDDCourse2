@@ -6,9 +6,9 @@ package com.tdd;
 public class Sale {
 
     private Display display;
-    private SellOneItemTest.Catalog catalog;
+    private ScanOneItemTest.Catalog catalog;
 
-    public Sale(Display display, SellOneItemTest.Catalog catalog) {
+    public Sale(Display display, ScanOneItemTest.Catalog catalog) {
         this.catalog = catalog;
         this.display = display;
     }
