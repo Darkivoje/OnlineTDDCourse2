@@ -7,7 +7,7 @@ public class Sale {
 
     private Display display;
     private Catalog catalog;
-    private String priceAsText;
+    private String scannedPrice;
 
     public Sale(Display display, Catalog catalog) {
         this.catalog = catalog;
@@ -21,19 +21,21 @@ public class Sale {
             display.displayEmptyBarcodeMessage();
             return;
         }
-        priceAsText = catalog.findPrice(barcode);
-        if (priceAsText == null) {
+        scannedPrice = catalog.findPrice(barcode);
+        if (scannedPrice == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
-            display.displayPrice(priceAsText);
+            display.displayPrice(scannedPrice);
         }
     }
 
     public void onTotal() {
-        if (priceAsText == null)
-        display.displayNoSaleInProgressMessage();
-        else
-            display.displayPurchaseTotal(priceAsText);
+        boolean saleInProgress = (scannedPrice != null);
+        if (saleInProgress) {
+            display.displayPurchaseTotal(scannedPrice);
+        } else {
+            display.displayNoSaleInProgressMessage();
+        }
 
     }
 
