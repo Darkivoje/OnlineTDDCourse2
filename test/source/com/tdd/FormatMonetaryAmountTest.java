@@ -4,8 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,8 +23,12 @@ public class FormatMonetaryAmountTest {
 
     @Parameterized.Parameters(name = "Monetary amount {0} formats to {1}")
     public static Collection<Object[]> data() {
-        return Collections.singletonList(new Object[] {
-            789, "$7.89"
+        return Arrays.asList(new Object[][]{
+                {789, "$7.89"},
+                {520 , "$5.20"},
+                {400 , "$4.00"},
+                {002 , "$0.02"},
+                {37 , "$0.37"},
         });
     }
 
@@ -33,7 +39,7 @@ public class FormatMonetaryAmountTest {
     }
 
     private static String format(int priceInCents) {
-        return "$7.89";
+        return String.format(Locale.US,"$%.2f", priceInCents / 100.0d);
     }
 
 
