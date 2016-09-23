@@ -22,6 +22,10 @@ public class ScanOneItemTest {
             put("12345", "$1.95");
             put("12346", "$2.95");
             put("12347", "$7.95");
+        }}, new HashMap<String, Integer>() {{
+            put("12345", 195);
+            put("12346", 295);
+            put("12347", 795);
         }}));
     }
 
@@ -50,7 +54,7 @@ public class ScanOneItemTest {
 
     @Test
     public void testEmptyBarcode() throws Exception {
-        Sale sale = new Sale(display, new Catalog(null));
+        Sale sale = new Sale(display, new Catalog(null, null));
         sale.onBarcode("");
         assertEquals("Scanning error: barcode was empty", display.getText());
 
