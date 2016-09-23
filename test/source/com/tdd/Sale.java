@@ -21,12 +21,16 @@ public class Sale {
             display.displayEmptyBarcodeMessage();
             return;
         }
-        scannedPrice = catalog.findPrice(barcode);
+        scannedPrice = catalog.findThenFormatPrice(barcode);
         if (scannedPrice == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
-            display.displayPrice(scannedPrice);
+            display.displayPrice(formatMonetoryAmount(scannedPrice));
         }
+    }
+
+    private String formatMonetoryAmount(String priceAsText) {
+        return priceAsText;
     }
 
     public void onTotal() {

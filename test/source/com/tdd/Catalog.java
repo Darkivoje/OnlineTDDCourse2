@@ -18,7 +18,7 @@ public class Catalog {
         return pricesAsTextByBarcode;
     }
 
-    public String findPrice(String barcode) {
+    public String findThenFormatPrice(String barcode) {
         return pricesAsTextByBarcode.get(barcode);
     }
 }
