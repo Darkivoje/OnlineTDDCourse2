@@ -6,7 +6,6 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
@@ -29,17 +28,18 @@ public class FormatMonetaryAmountTest {
                 {400 , "$4.00"},
                 {002 , "$0.02"},
                 {37 , "$0.37"},
+                {418976 , "$4,189.76"},
+                {210832281 , "$2,108,322.81"},
         });
     }
 
     @Test
     public void test() throws Exception {
         assertEquals(expectedFormatedPrice, format(priceInCents));
-
     }
 
     private static String format(int priceInCents) {
-        return String.format(Locale.US,"$%.2f", priceInCents / 100.0d);
+        return String.format(Locale.US,"$%,.2f", priceInCents / 100.0d);
     }
 
 
