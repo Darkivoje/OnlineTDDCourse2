@@ -37,4 +37,8 @@ public class Display {
     public void displayPurchaseTotal(String price) {
         setText("Total: " + price);
     }
+
+    void displayPrice(Integer priceInCents) {
+        displayText(format(priceInCents));
+    }
 }
