@@ -21,10 +21,11 @@ public class Sale {
             display.displayEmptyBarcodeMessage();
             return;
         }
-        scannedPrice = catalog.findThenFormatPrice(barcode);
-        if (scannedPrice == null) {
+        Integer priceInCents = catalog.findPrice(barcode);
+        if ( priceInCents == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
+            scannedPrice = Catalog.format(priceInCents);
             display.displayPrice(scannedPrice);
         }
     }
