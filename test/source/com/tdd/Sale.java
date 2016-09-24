@@ -1,5 +1,8 @@
 package com.tdd;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created by darkorajin on 19.09.16.
  */
@@ -7,7 +10,7 @@ public class Sale {
 
     private Display display;
     private Catalog catalog;
-    private String scannedPrice;
+    private Collection<Integer> scannedPrices = new ArrayList<Integer>();
 
     public Sale(Display display, Catalog catalog) {
         this.catalog = catalog;
@@ -25,15 +28,15 @@ public class Sale {
         if ( priceInCents == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
-            scannedPrice = Display.format(priceInCents);
+            scannedPrices.add(priceInCents);
             display.displayPrice(priceInCents);
         }
     }
 
     public void onTotal() {
-        boolean saleInProgress = (scannedPrice != null);
+        boolean saleInProgress = (!scannedPrices.isEmpty());
         if (saleInProgress) {
-            display.displayPurchaseTotal(scannedPrice);
+            display.displayPurchaseTotal(Display.format(scannedPrices.iterator().next()));
         } else {
             display.displayNoSaleInProgressMessage();
         }
