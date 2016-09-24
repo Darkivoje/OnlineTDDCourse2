@@ -18,8 +18,8 @@ public class Display {
 
     public String getText() {return text;}
 
-    public void displayText(String priceAsText) {
-        setText(priceAsText);
+    public void displayText(String text) {
+        setText(text);
     }
 
     public void displayEmptyBarcodeMessage() {
