@@ -1,10 +1,16 @@
 package com.tdd;
 
+import java.util.Locale;
+
 /**
  * Created by darkorajin on 19.09.16.
  */
 public class Display {
     private String text;
+
+    public static String format(int priceInCents) {
+        return String.format(Locale.US, "$%,.2f", priceInCents / 100.0d);
+    }
 
     public void setText(String text) {
         this.text = text;

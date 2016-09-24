@@ -15,10 +15,6 @@ public class Catalog {
         this.pricesInCentsByBarcode = pricesInCentsByBarcode;
     }
 
-    public static String format(int priceInCents) {
-        return String.format(Locale.US, "$%,.2f", priceInCents / 100.0d);
-    }
-
     public Map<String, String> getPricesAsTextByBarcode() {
         return pricesAsTextByBarcode;
     }
