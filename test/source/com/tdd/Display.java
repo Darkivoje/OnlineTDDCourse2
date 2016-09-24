@@ -18,10 +18,6 @@ public class Display {
 
     public String getText() {return text;}
 
-    public void displayText(String text) {
-        setText(text);
-    }
-
     public void displayEmptyBarcodeMessage() {
         setText("Scanning error: barcode was empty");
     }
@@ -39,6 +35,6 @@ public class Display {
     }
 
     void displayPrice(Integer priceInCents) {
-        displayText(format(priceInCents));
+        setText(format(priceInCents));
     }
 }
