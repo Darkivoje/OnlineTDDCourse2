@@ -34,8 +34,8 @@ public class Display {
         setText("No sale in progress. Try scanning a product.");
     }
 
-    public void displayPurchaseTotal(String price) {
-        setText("Total: " + price);
+    public void displayPurchaseTotal(Integer purchaseTotal) {
+        setText("Total: " + format(purchaseTotal));
     }
 
     void displayPrice(Integer priceInCents) {
