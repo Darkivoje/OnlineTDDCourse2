@@ -18,7 +18,7 @@ public class Display {
 
     public String getText() {return text;}
 
-    public void displayPrice(String priceAsText) {
+    public void displayText(String priceAsText) {
         setText(priceAsText);
     }
 
