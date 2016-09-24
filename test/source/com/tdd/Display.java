@@ -8,7 +8,7 @@ import java.util.Locale;
 public class Display {
     private String text;
 
-    public static String format(int priceInCents) {
+    public static String formatMonetaryAmount(int priceInCents) {
         return String.format(Locale.US, "$%,.2f", priceInCents / 100.0d);
     }
 
@@ -31,10 +31,10 @@ public class Display {
     }
 
     public void displayPurchaseTotal(Integer purchaseTotal) {
-        setText("Total: " + format(purchaseTotal));
+        setText("Total: " + formatMonetaryAmount(purchaseTotal));
     }
 
     void displayPrice(Integer priceInCents) {
-        setText(format(priceInCents));
+        setText(formatMonetaryAmount(priceInCents));
     }
 }
