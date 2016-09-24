@@ -1,5 +1,6 @@
 package com.tdd;
 
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -14,11 +15,19 @@ public class Catalog {
         this.pricesInCentsByBarcode = pricesInCentsByBarcode;
     }
 
+    public static String format(int priceInCents) {
+        return String.format(Locale.US, "$%,.2f", priceInCents / 100.0d);
+    }
+
     public Map<String, String> getPricesAsTextByBarcode() {
         return pricesAsTextByBarcode;
     }
 
     public String findThenFormatPrice(String barcode) {
-        return pricesAsTextByBarcode.get(barcode);
+        Integer priceInCents = pricesInCentsByBarcode.get(barcode);
+        if (priceInCents == null)
+            return null;
+        else
+            return format(priceInCents);
     }
 }
