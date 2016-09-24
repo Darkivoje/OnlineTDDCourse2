@@ -10,7 +10,7 @@ public class Sale {
 
     private Display display;
     private Catalog catalog;
-    private Collection<Integer> scannedPrices = new ArrayList<Integer>();
+    private Collection<Integer> pendingPurchaseItemPrices = new ArrayList<Integer>();
 
     public Sale(Display display, Catalog catalog) {
         this.catalog = catalog;
@@ -28,15 +28,15 @@ public class Sale {
         if ( priceInCents == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
-            scannedPrices.add(priceInCents);
+            pendingPurchaseItemPrices.add(priceInCents);
             display.displayPrice(priceInCents);
         }
     }
 
     public void onTotal() {
-        boolean saleInProgress = (!scannedPrices.isEmpty());
+        boolean saleInProgress = (!pendingPurchaseItemPrices.isEmpty());
         if (saleInProgress) {
-            display.displayPurchaseTotal(Display.format(scannedPrices.iterator().next()));
+            display.displayPurchaseTotal(Display.format(pendingPurchaseItemPrices.iterator().next()));
         } else {
             display.displayNoSaleInProgressMessage();
         }
