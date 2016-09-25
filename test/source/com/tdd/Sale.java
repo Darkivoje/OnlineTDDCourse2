@@ -26,7 +26,7 @@ public class Sale {
             return;
         }
         Integer priceInCents = catalog.findPrice(barcode);
-        if ( priceInCents == null) {
+        if (priceInCents == null) {
             display.displayProductNotFoundForBarcodeMessage(barcode);
         } else {
             pendingPurchaseItemPrices.add(priceInCents);
@@ -48,12 +48,7 @@ public class Sale {
     }
 
     public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
-        if (purchaseItemPrices.isEmpty())
-            return 0;
-        else if (purchaseItemPrices.size() == 1)
-            return purchaseItemPrices.iterator().next();
-        else
-            return purchaseItemPrices.stream().reduce(new Integer(0), (sum, each) -> sum + each);
+        return purchaseItemPrices.stream().reduce(0, (accumulator, each) -> accumulator + each);
     }
 
 
