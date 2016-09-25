@@ -2,6 +2,7 @@ package com.tdd;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.zip.Inflater;
 
 /**
  * Created by darkorajin on 19.09.16.
@@ -47,7 +48,12 @@ public class Sale {
     }
 
     public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
-        return purchaseItemPrices.iterator().next();
+        if (purchaseItemPrices.isEmpty())
+            return 0;
+        else if (purchaseItemPrices.size() == 1)
+            return purchaseItemPrices.iterator().next();
+        else
+            return purchaseItemPrices.stream().reduce(new Integer(0), (sum, each) -> sum + each);
     }
 
 
