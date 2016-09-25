@@ -43,7 +43,12 @@ public class Sale {
     }
 
     private Integer pendingPurchaseTotal() {
-        return pendingPurchaseItemPrices.iterator().next();
+        return computePurchaseTotal(pendingPurchaseItemPrices);
     }
+
+    public static Integer computePurchaseTotal(Collection<Integer> purchaseItemPrices) {
+        return purchaseItemPrices.iterator().next();
+    }
+
 
 }

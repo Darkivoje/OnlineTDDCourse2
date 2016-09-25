@@ -1,8 +1,10 @@
 package com.tdd;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -68,12 +70,13 @@ public class SellMultipleItemsTest {
         return new Catalog(Collections.emptyMap());
     }
     
-    /*@Test
+    @Test
+    @Ignore("Refactoring")
     public void severalItemsAllFound() throws Exception {
-        Catalog catalog = new Catalog(new HashMap<String, String>() {{
-            put("1","$8.50");
-            put("2","$12.75");
-            put("3","$3.30");
+        Catalog catalog = new Catalog(new HashMap<String, Integer>() {{
+            put("1",850);
+            put("2",1275);
+            put("3",330);
         }});
         Display display = new Display();
         Sale sale = new Sale(display, catalog);
@@ -85,5 +88,5 @@ public class SellMultipleItemsTest {
 
         assertEquals("Total: $24.50", display.getText());
 
-    }*/
+    }
 }
