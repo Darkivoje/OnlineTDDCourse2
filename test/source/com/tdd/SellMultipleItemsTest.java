@@ -44,6 +44,30 @@ public class SellMultipleItemsTest {
         assertEquals("No sale in progress. Try scanning a product.", display.getText());
     }
 
+    @Test
+    public void severalItemsAllNotFound() throws Exception {
+        Display display = new Display();
+        Sale sale = new Sale(display, catalogWithoutBarcodes(
+                "product you wont find",
+                "another product you wont find",
+                "yet another product you wont find"));
+
+        sale.onBarcode("product you wont find");
+        sale.onBarcode("another product you wont find");
+        sale.onBarcode("yet another product you wont find");
+        sale.onTotal();
+
+        assertEquals("No sale in progress. Try scanning a product.", display.getText());
+    }
+
+    private Catalog catalogWithoutBarcodes(String... barcodesToExclude) {
+        return emptyCatalog();
+    }
+
+    private Catalog emptyCatalog() {
+        return new Catalog(Collections.emptyMap());
+    }
+    
     /*@Test
     public void severalItemsAllFound() throws Exception {
         Catalog catalog = new Catalog(new HashMap<String, String>() {{
