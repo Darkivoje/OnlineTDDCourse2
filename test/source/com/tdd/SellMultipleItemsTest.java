@@ -71,7 +71,6 @@ public class SellMultipleItemsTest {
     }
     
     @Test
-    @Ignore("Refactoring")
     public void severalItemsAllFound() throws Exception {
         Catalog catalog = new Catalog(new HashMap<String, Integer>() {{
             put("1",850);
@@ -86,7 +85,24 @@ public class SellMultipleItemsTest {
         sale.onBarcode("3");
         sale.onTotal();
 
-        assertEquals("Total: $24.50", display.getText());
+        assertEquals("Total: $24.55", display.getText());
+    }
+
+    @Test
+    public void severalItemsSomeNotFound() throws Exception {
+        Catalog catalog = new Catalog(new HashMap<String, Integer>() {{
+            put("1",1200);
+            put("2",500);
+        }});
+        Display display = new Display();
+        Sale sale = new Sale(display, catalog);
+
+        sale.onBarcode("1");
+        sale.onBarcode("product you wont find");
+        sale.onBarcode("2");
+        sale.onTotal();
+
+        assertEquals("Total: $17.00", display.getText());
 
     }
 }
